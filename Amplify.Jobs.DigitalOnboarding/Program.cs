@@ -7,9 +7,6 @@ var builder = FunctionsApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
 AppConfig.Initialize(builder.Configuration);
-var conn = AppConfig.Configuration["ConnectionStrings:DefaultConnection"];
-Console.WriteLine(conn);
-
 
 builder.ConfigureFunctionsWebApplication();
 
