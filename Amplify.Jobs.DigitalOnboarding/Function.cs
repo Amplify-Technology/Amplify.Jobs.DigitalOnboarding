@@ -19,7 +19,7 @@ namespace Amplify.Jobs.DigitalOnboarding.Onboarding
 
         [Function("OnboardingQueueTrigger")]
         public void Run(
-            [QueueTrigger("onboarding-packageevent", Connection = "AzureWebJobsStorage")] QueueMessage message)
+            [QueueTrigger("onboarding-event", Connection = "AzureWebJobsStorage")] QueueMessage message)
         {
             string decodedMessage = Encoding.UTF8.GetString(Convert.FromBase64String(message.MessageText));
 
