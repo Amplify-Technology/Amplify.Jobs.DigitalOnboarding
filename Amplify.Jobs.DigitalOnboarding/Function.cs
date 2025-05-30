@@ -21,12 +21,30 @@ namespace Amplify.Jobs.DigitalOnboarding.Onboarding
         public void Run(
             [QueueTrigger("onboarding-event", Connection = "AzureWebJobsStorage")] QueueMessage message)
         {
-            string decodedMessage = Encoding.UTF8.GetString(Convert.FromBase64String(message.MessageText));
+            string decodedMessage;
+            try
+            {
+                decodedMessage = Encoding.UTF8.GetString(Convert.FromBase64String(message.MessageText));
+            }
+            catch (FormatException ex)
+            {
+                _logger.LogError(ex, "Message is not valid Base64: {RawMessage}", message.MessageText);
+                return;
+            }
 
             using var logWriter = new StringWriter();
             _logger.LogInformation("Processing onboarding-event queue message: {Message}", decodedMessage);
 
-            ProcessQueueMessage(decodedMessage, logWriter);
+            try
+            {
+                ProcessQueueMessage(decodedMessage, logWriter);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unhandled error during queue message processing.");
+                throw;
+            }
+
             _logger.LogInformation(logWriter.ToString());
         }
 
