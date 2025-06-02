@@ -1,4 +1,4 @@
-name: Build and Push Azure Function Docker Image
+name: Build Azure Function Docker Image
 
 on:
   push:
@@ -6,29 +6,15 @@ on:
       - main
 
 env:
-  #ACR_NAME: amplifyartifactregistry
   IMAGE_NAME: amplify-jobs-digitalonboarding
 
 jobs:
-  build-and-push:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Azure Login
-        uses: azure/login@v2
-        with:
-          client-id: dc8159ea-a733-4ef9-95e8-c93fcecc630c
-          tenant-id: b85142e0-e761-410a-ba40-cfe0e7ae5f5b
-          subscription-id: 3da04b10-b2a7-463f-b8bb-3af1142d3623
-
-      - name: Log in to Azure Container Registry
-        run: az acr login --name $ACR_NAME
-
       - name: Build Docker image
-        run: docker build -t $ACR_NAME.azurecr.io/$IMAGE_NAME:latest .
-
-      - name: Push Docker image to ACR
-        run: docker push $ACR_NAME.azurecr.io/$IMAGE_NAME:latest
+        run: docker build -t $IMAGE_NAME:latest .
