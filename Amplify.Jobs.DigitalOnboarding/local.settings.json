@@ -1,7 +1,7 @@
 {
     "IsEncrypted": false,
-    "Values": {
-        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
-    }
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=amplifytestjobstorage;AccountKey=PRNIp8WMYwLtCuVVMFYs/WcYH3w9XupTyJoVP4QqRYYdvYIQuVmJwpqI2Hr0bxBsiJBRGPEp9MTlgNsm1Miu9A==;EndpointSuffix=core.windows.net",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+  }
 }
