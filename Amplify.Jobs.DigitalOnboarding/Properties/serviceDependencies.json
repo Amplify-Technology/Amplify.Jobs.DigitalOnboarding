@@ -4,12 +4,19 @@
       "type": "appInsights"
     },
     "storage1": {
-      "type": "storage",
+      "type": "storage,emulator",
       "connectionId": "AzureWebJobsStorage",
       "dynamicId": null
     },
     "secrets1": {
       "type": "secrets"
+    },
+    "storage2": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/amplifytestjobstorage",
+      "type": "storage.azure",
+      "connectionId": "OperationalStorage",
+      "dynamicId": null
     }
   }
 }

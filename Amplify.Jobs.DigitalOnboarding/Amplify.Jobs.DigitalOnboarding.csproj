@@ -10,7 +10,7 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Amplify" Version="1.0.1" />
-    <PackageReference Include="Amplify.Data.Dev" Version="1.0.0-release-jobs2" />
+    <PackageReference Include="Amplify.Data-Dev" Version="1.0.0-release-jobs2" />
     <PackageReference Include="Amplify.Data.EFCore" Version="1.0.5" />
     <PackageReference Include="Amplify.Events.Messages" Version="1.0.0" />
     <PackageReference Include="Amplify.Interop.GoldmanFolio" Version="1.0.0" />
